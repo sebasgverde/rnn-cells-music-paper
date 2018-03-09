@@ -1,5 +1,0 @@
-- seem there's no way to export to png from console indicating the dimensions
-- you can use mid_2_wav and mid_2_mp3 to get the audios
-- open the midis in musescore, change the dimension in design->page settings
-- save as .mscz
-- export as png (even so the console doesn't work, export each png manually)
