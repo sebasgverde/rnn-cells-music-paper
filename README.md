@@ -53,6 +53,12 @@ unzip dataset.zip -d dataset/
 rm dataset.zip 
 ```
 
+Run the script which akes 45 experiements (the 3 dataset variations, with the 3 cell types and number of layers from 1 to 5)
+```
+./rnn-cells-music-paper/paper_scripts/bashlayerscompleteexperimet.sh 
+```
+This will create the folder models
+
 ```
 ```
 ```
@@ -61,8 +67,11 @@ rm dataset.zip
 ```
 ```
 ```
-```
-```
+dataset metrics
+generated songs
+complete layers
+cost function val
+embeddings
 ### Code
 [Paper scripts](https://github.com/sebasgverde/rnn-cells-music-paper)
 [RNN model](https://github.com/sebasgverde/rnnMusicSeqGenerator)
