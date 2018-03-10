@@ -1,10 +1,11 @@
 #!/bin/bash
 
-SAMPLE_PYTHON='~/code/sample.py'
+
+SAMPLE_PYTHON=~/exampleresearch/rnnMusicSeqGenerator/sample.py
 
 
-EXPERIMENT_PATH='~/experiments'
-OUTPUT_PATH='~/experiments/generated'
+EXPERIMENT_PATH=~/exampleresearch/models
+OUTPUT_PATH=~/exampleresearch/experiments/generated
 
 NOTES_NUMBER=30
 
