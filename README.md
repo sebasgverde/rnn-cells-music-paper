@@ -53,23 +53,51 @@ unzip dataset.zip -d dataset/
 rm dataset.zip 
 ```
 
-Run the script which akes 45 experiements (the 3 dataset variations, with the 3 cell types and number of layers from 1 to 5)
+Run the script which makes 45 experiements (the 3 dataset variations, with the 3 cell types and number of layers from 1 to 5), time will depend on the GPU hardware, in an Nvidia m1000 it takes around a week
 ```
 ./rnn-cells-music-paper/paper_scripts/bashlayerscompleteexperimet.sh 
 ```
-This will create the folder models
+This will create the folder models, with all the models separated in folders by dataset and cell type.
 
+It is time now to get the learning curves graphs to reduce the research to 9 models. Use this command for each combination of dataset-cell:
 ```
+tensorboard --log_dir models/control/lstm/ 
 ```
+In the "Scalars" of tensorboard you will see a graph like this:
+[insert image here]()
+
+Now that we have reduced the problem to 9 models (best learning curve for each pair datset-cell), we will generate 100 songs with each model, using always the same seed and size (just modify the generate9timesn script with the apropiate layer number)
 ```
+mkdir ~/exampleresearch/experiments/
+mkdir ~/exampleresearch/experiments/generated
+./rnn-cells-music-paper/paper_scripts/generate9timesn.sh  
 ```
+This will create 9 folders, each with 200 files, the 100 songs as midi and as pickle file with the song as list.
+[imagen]()
+
+The next step is tou use the music_geometry_eval library to test the tonality of the models. This script, will apply 3 quantitative metrics (Conjunct Melody Motion, Limited Macroharmony and Centricity) to each set of 100 songs. The output file will have 9 tables with all the songs, different latex tables with summary information, the list of the most representative song of each model (the song whose metrics have the lower euclidean distance to the mean of the 100) and finally, a latex table with the mean and standard deviation for each metric in each model for each 100 song set.
 ```
+python rnn-cells-music-paper/paper_scripts/eval_n_songs.py --generated_dir ~/exampleresearch/experiments/generated > ~/exampleresearch/experiments/metrics_eval_100_songs.txt
 ```
+After that create a folder and move each of the most representative songs there, this script will generate the latex code for table with those metrics
 ```
+python rnn-cells-music-paper/paper_scripts/eval_songs.py --songs_folder ~/exampleresearch/experiments/most_repres_songs > ~/exampleresearch/experiments/metrics_eval_most_repres_songs.txt
 ```
-dataset metrics
-generated songs
+
+In order to analyse it, it is necessary to have a base line applying the metrics to the dataset:
+```
+python rnn-cells-music-paper/paper_scripts/dataset_metric_eval.py --pickles_dir ~/exampleresearch/dataset > ~/exampleresearch/experiments/metrics_eval_dataset.txt
+```
+Once you compile the latex tables, they will loke like:
+[imagen]()
+[imagen]()
+[imagen]()
+
+
+
 complete layers
+generated songs
+dataset metrics
 cost function val
 embeddings
 ### Code
