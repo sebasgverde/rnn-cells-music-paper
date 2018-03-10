@@ -4,9 +4,6 @@ import os
 import pickle
 import argparse
 
-# to import modules form parent folder
-import sys 
-sys.path.append('..')
 import music_geometry_eval
 
 from scipy import stats
@@ -157,24 +154,24 @@ for folder in setslist:
 
 
 print '\nlatex table mean:'
-partial_result = result['base']
-print('BASE  & {0:.2f} {1:.2f} {2:.2f} & {3:.2f} {4:.2f} {5:.2f} & {6:.2f} {7:.2f} {8:.2f} \\\\').format(partial_result['lstm'][m1]['desc_stats'].mean, partial_result['lstm'][m2]['desc_stats'].mean, partial_result['lstm'][m3]['desc_stats'].mean, partial_result['nas'][m1]['desc_stats'].mean, partial_result['nas'][m2]['desc_stats'].mean, partial_result['nas'][m3]['desc_stats'].mean, partial_result['ugrnn'][m1]['desc_stats'].mean, partial_result['ugrnn'][m2]['desc_stats'].mean, partial_result['ugrnn'][m3]['desc_stats'].mean)
+partial_result = result['control']
+print('control & {0:.2f} {1:.2f} {2:.2f} & {3:.2f} {4:.2f} {5:.2f} & {6:.2f} {7:.2f} {8:.2f} \\\\').format(partial_result['lstm'][m1]['desc_stats'].mean, partial_result['lstm'][m2]['desc_stats'].mean, partial_result['lstm'][m3]['desc_stats'].mean, partial_result['nas'][m1]['desc_stats'].mean, partial_result['nas'][m2]['desc_stats'].mean, partial_result['nas'][m3]['desc_stats'].mean, partial_result['ugrnn'][m1]['desc_stats'].mean, partial_result['ugrnn'][m2]['desc_stats'].mean, partial_result['ugrnn'][m3]['desc_stats'].mean)
 partial_result = result['interval']
 print('interval  & {0:.2f} {1:.2f} {2:.2f} & {3:.2f} {4:.2f} {5:.2f} & {6:.2f} {7:.2f} {8:.2f} \\\\').format(partial_result['lstm'][m1]['desc_stats'].mean, partial_result['lstm'][m2]['desc_stats'].mean, partial_result['lstm'][m3]['desc_stats'].mean, partial_result['nas'][m1]['desc_stats'].mean, partial_result['nas'][m2]['desc_stats'].mean, partial_result['nas'][m3]['desc_stats'].mean, partial_result['ugrnn'][m1]['desc_stats'].mean, partial_result['ugrnn'][m2]['desc_stats'].mean, partial_result['ugrnn'][m3]['desc_stats'].mean)
 partial_result = result['db12']
 print('db12  & {0:.2f} {1:.2f} {2:.2f} & {3:.2f} {4:.2f} {5:.2f} & {6:.2f} {7:.2f} {8:.2f} \\\\').format(partial_result['lstm'][m1]['desc_stats'].mean, partial_result['lstm'][m2]['desc_stats'].mean, partial_result['lstm'][m3]['desc_stats'].mean, partial_result['nas'][m1]['desc_stats'].mean, partial_result['nas'][m2]['desc_stats'].mean, partial_result['nas'][m3]['desc_stats'].mean, partial_result['ugrnn'][m1]['desc_stats'].mean, partial_result['ugrnn'][m2]['desc_stats'].mean, partial_result['ugrnn'][m3]['desc_stats'].mean)
 
 print '\nlatex table variance:'
-partial_result = result['base']
-print('BASE  & {0:.2f} {1:.2f} {2:.2f} & {3:.2f} {4:.2f} {5:.2f} & {6:.2f} {7:.2f} {8:.2f} \\\\').format(partial_result['lstm'][m1]['desc_stats'].variance, partial_result['lstm'][m2]['desc_stats'].variance, partial_result['lstm'][m3]['desc_stats'].variance, partial_result['nas'][m1]['desc_stats'].variance, partial_result['nas'][m2]['desc_stats'].variance, partial_result['nas'][m3]['desc_stats'].variance, partial_result['ugrnn'][m1]['desc_stats'].variance, partial_result['ugrnn'][m2]['desc_stats'].variance, partial_result['ugrnn'][m3]['desc_stats'].variance)
+partial_result = result['control']
+print('control & {0:.2f} {1:.2f} {2:.2f} & {3:.2f} {4:.2f} {5:.2f} & {6:.2f} {7:.2f} {8:.2f} \\\\').format(partial_result['lstm'][m1]['desc_stats'].variance, partial_result['lstm'][m2]['desc_stats'].variance, partial_result['lstm'][m3]['desc_stats'].variance, partial_result['nas'][m1]['desc_stats'].variance, partial_result['nas'][m2]['desc_stats'].variance, partial_result['nas'][m3]['desc_stats'].variance, partial_result['ugrnn'][m1]['desc_stats'].variance, partial_result['ugrnn'][m2]['desc_stats'].variance, partial_result['ugrnn'][m3]['desc_stats'].variance)
 partial_result = result['interval']
 print('interval  & {0:.2f} {1:.2f} {2:.2f} & {3:.2f} {4:.2f} {5:.2f} & {6:.2f} {7:.2f} {8:.2f} \\\\').format(partial_result['lstm'][m1]['desc_stats'].variance, partial_result['lstm'][m2]['desc_stats'].variance, partial_result['lstm'][m3]['desc_stats'].variance, partial_result['nas'][m1]['desc_stats'].variance, partial_result['nas'][m2]['desc_stats'].variance, partial_result['nas'][m3]['desc_stats'].variance, partial_result['ugrnn'][m1]['desc_stats'].variance, partial_result['ugrnn'][m2]['desc_stats'].variance, partial_result['ugrnn'][m3]['desc_stats'].variance)
 partial_result = result['db12']
 print('db12  & {0:.2f} {1:.2f} {2:.2f} & {3:.2f} {4:.2f} {5:.2f} & {6:.2f} {7:.2f} {8:.2f} \\\\').format(partial_result['lstm'][m1]['desc_stats'].variance, partial_result['lstm'][m2]['desc_stats'].variance, partial_result['lstm'][m3]['desc_stats'].variance, partial_result['nas'][m1]['desc_stats'].variance, partial_result['nas'][m2]['desc_stats'].variance, partial_result['nas'][m3]['desc_stats'].variance, partial_result['ugrnn'][m1]['desc_stats'].variance, partial_result['ugrnn'][m2]['desc_stats'].variance, partial_result['ugrnn'][m3]['desc_stats'].variance)
 
 print '\nlatex table standard deviation:'
-partial_result = result['base']
-print('BASE  & {0:.2f} {1:.2f} {2:.2f} & {3:.2f} {4:.2f} {5:.2f} & {6:.2f} {7:.2f} {8:.2f} \\\\').format(partial_result['lstm'][m1]['std_dev'], partial_result['lstm'][m2]['std_dev'], partial_result['lstm'][m3]['std_dev'], partial_result['nas'][m1]['std_dev'], partial_result['nas'][m2]['std_dev'], partial_result['nas'][m3]['std_dev'], partial_result['ugrnn'][m1]['std_dev'], partial_result['ugrnn'][m2]['std_dev'], partial_result['ugrnn'][m3]['std_dev'])
+partial_result = result['control']
+print('control & {0:.2f} {1:.2f} {2:.2f} & {3:.2f} {4:.2f} {5:.2f} & {6:.2f} {7:.2f} {8:.2f} \\\\').format(partial_result['lstm'][m1]['std_dev'], partial_result['lstm'][m2]['std_dev'], partial_result['lstm'][m3]['std_dev'], partial_result['nas'][m1]['std_dev'], partial_result['nas'][m2]['std_dev'], partial_result['nas'][m3]['std_dev'], partial_result['ugrnn'][m1]['std_dev'], partial_result['ugrnn'][m2]['std_dev'], partial_result['ugrnn'][m3]['std_dev'])
 partial_result = result['interval']
 print('interval  & {0:.2f} {1:.2f} {2:.2f} & {3:.2f} {4:.2f} {5:.2f} & {6:.2f} {7:.2f} {8:.2f} \\\\').format(partial_result['lstm'][m1]['std_dev'], partial_result['lstm'][m2]['std_dev'], partial_result['lstm'][m3]['std_dev'], partial_result['nas'][m1]['std_dev'], partial_result['nas'][m2]['std_dev'], partial_result['nas'][m3]['std_dev'], partial_result['ugrnn'][m1]['std_dev'], partial_result['ugrnn'][m2]['std_dev'], partial_result['ugrnn'][m3]['std_dev'])
 partial_result = result['db12']
@@ -182,16 +179,16 @@ print('db12  & {0:.2f} {1:.2f} {2:.2f} & {3:.2f} {4:.2f} {5:.2f} & {6:.2f} {7:.2
 
 
 print '\nlatex table best songs:'
-partial_result = result['base']
-print('BASE  & {0:.2f} {1:.2f} {2:.2f} & {3:.2f} {4:.2f} {5:.2f} & {6:.2f} {7:.2f} {8:.2f} \\\\').format(partial_result['lstm']['best_song'][m1], partial_result['lstm']['best_song'][m2], partial_result['lstm']['best_song'][m3], partial_result['nas']['best_song'][m1], partial_result['nas']['best_song'][m2], partial_result['nas']['best_song'][m3], partial_result['ugrnn']['best_song'][m1], partial_result['ugrnn']['best_song'][m2], partial_result['ugrnn']['best_song'][m3])
+partial_result = result['control']
+print('control & {0:.2f} {1:.2f} {2:.2f} & {3:.2f} {4:.2f} {5:.2f} & {6:.2f} {7:.2f} {8:.2f} \\\\').format(partial_result['lstm']['best_song'][m1], partial_result['lstm']['best_song'][m2], partial_result['lstm']['best_song'][m3], partial_result['nas']['best_song'][m1], partial_result['nas']['best_song'][m2], partial_result['nas']['best_song'][m3], partial_result['ugrnn']['best_song'][m1], partial_result['ugrnn']['best_song'][m2], partial_result['ugrnn']['best_song'][m3])
 partial_result = result['interval']
 print('interval  & {0:.2f} {1:.2f} {2:.2f} & {3:.2f} {4:.2f} {5:.2f} & {6:.2f} {7:.2f} {8:.2f} \\\\').format(partial_result['lstm']['best_song'][m1], partial_result['lstm']['best_song'][m2], partial_result['lstm']['best_song'][m3], partial_result['nas']['best_song'][m1], partial_result['nas']['best_song'][m2], partial_result['nas']['best_song'][m3], partial_result['ugrnn']['best_song'][m1], partial_result['ugrnn']['best_song'][m2], partial_result['ugrnn']['best_song'][m3])
 partial_result = result['db12']
 print('db12  & {0:.2f} {1:.2f} {2:.2f} & {3:.2f} {4:.2f} {5:.2f} & {6:.2f} {7:.2f} {8:.2f} \\\\').format(partial_result['lstm']['best_song'][m1], partial_result['lstm']['best_song'][m2], partial_result['lstm']['best_song'][m3], partial_result['nas']['best_song'][m1], partial_result['nas']['best_song'][m2], partial_result['nas']['best_song'][m3], partial_result['ugrnn']['best_song'][m1], partial_result['ugrnn']['best_song'][m2], partial_result['ugrnn']['best_song'][m3])
 
 print '\nlatex table most representative songs:'
-partial_result = result['base']
-print('BASE  & {0:.2f} {1:.2f} {2:.2f} & {3:.2f} {4:.2f} {5:.2f} & {6:.2f} {7:.2f} {8:.2f} \\\\').format(partial_result['lstm']['most_rep_song'][m1], partial_result['lstm']['most_rep_song'][m2], partial_result['lstm']['most_rep_song'][m3], partial_result['nas']['most_rep_song'][m1], partial_result['nas']['most_rep_song'][m2], partial_result['nas']['most_rep_song'][m3], partial_result['ugrnn']['most_rep_song'][m1], partial_result['ugrnn']['most_rep_song'][m2], partial_result['ugrnn']['most_rep_song'][m3])
+partial_result = result['control']
+print('control & {0:.2f} {1:.2f} {2:.2f} & {3:.2f} {4:.2f} {5:.2f} & {6:.2f} {7:.2f} {8:.2f} \\\\').format(partial_result['lstm']['most_rep_song'][m1], partial_result['lstm']['most_rep_song'][m2], partial_result['lstm']['most_rep_song'][m3], partial_result['nas']['most_rep_song'][m1], partial_result['nas']['most_rep_song'][m2], partial_result['nas']['most_rep_song'][m3], partial_result['ugrnn']['most_rep_song'][m1], partial_result['ugrnn']['most_rep_song'][m2], partial_result['ugrnn']['most_rep_song'][m3])
 partial_result = result['interval']
 print('interval  & {0:.2f} {1:.2f} {2:.2f} & {3:.2f} {4:.2f} {5:.2f} & {6:.2f} {7:.2f} {8:.2f} \\\\').format(partial_result['lstm']['most_rep_song'][m1], partial_result['lstm']['most_rep_song'][m2], partial_result['lstm']['most_rep_song'][m3], partial_result['nas']['most_rep_song'][m1], partial_result['nas']['most_rep_song'][m2], partial_result['nas']['most_rep_song'][m3], partial_result['ugrnn']['most_rep_song'][m1], partial_result['ugrnn']['most_rep_song'][m2], partial_result['ugrnn']['most_rep_song'][m3])
 partial_result = result['db12']
@@ -207,24 +204,24 @@ for string in most_representative_song_list:
 
 print '\nlatex table mean and std dev:' 
 print '\\multirow{ 3}{*}{m1} &  '
-partial_result = result['base']
-print('BASE  & {0:.2f} $\\pm$ {1:.2f} & {2:.2f} $\\pm$ {3:.2f} & {4:.2f} $\\pm$ {5:.2f} \\\\').format(partial_result['lstm'][m1]['desc_stats'].mean, partial_result['lstm'][m1]['std_dev'], partial_result['nas'][m1]['desc_stats'].mean, partial_result['nas'][m1]['std_dev'], partial_result['ugrnn'][m1]['desc_stats'].mean, partial_result['ugrnn'][m1]['std_dev'])
+partial_result = result['control']
+print('control & {0:.2f} $\\pm$ {1:.2f} & {2:.2f} $\\pm$ {3:.2f} & {4:.2f} $\\pm$ {5:.2f} \\\\').format(partial_result['lstm'][m1]['desc_stats'].mean, partial_result['lstm'][m1]['std_dev'], partial_result['nas'][m1]['desc_stats'].mean, partial_result['nas'][m1]['std_dev'], partial_result['ugrnn'][m1]['desc_stats'].mean, partial_result['ugrnn'][m1]['std_dev'])
 partial_result = result['interval']
 print('&interval  & {0:.2f} $\\pm$ {1:.2f} & {2:.2f} $\\pm$ {3:.2f} & {4:.2f} $\\pm$ {5:.2f} \\\\').format(partial_result['lstm'][m1]['desc_stats'].mean, partial_result['lstm'][m1]['std_dev'], partial_result['nas'][m1]['desc_stats'].mean, partial_result['nas'][m1]['std_dev'], partial_result['ugrnn'][m1]['desc_stats'].mean, partial_result['ugrnn'][m1]['std_dev'])
 partial_result = result['db12']
 print('&db12  & {0:.2f} $\\pm$ {1:.2f} & {2:.2f} $\\pm$ {3:.2f} & {4:.2f} $\\pm$ {5:.2f} \\\\').format(partial_result['lstm'][m1]['desc_stats'].mean, partial_result['lstm'][m1]['std_dev'], partial_result['nas'][m1]['desc_stats'].mean, partial_result['nas'][m1]['std_dev'], partial_result['ugrnn'][m1]['desc_stats'].mean, partial_result['ugrnn'][m1]['std_dev'])
 print '\\hline'
 print '\\multirow{ 3}{*}{m2} &  '
-partial_result = result['base']
-print('BASE  & {0:.2f} $\\pm$ {1:.2f} & {2:.2f} $\\pm$ {3:.2f} & {4:.2f} $\\pm$ {5:.2f} \\\\').format(partial_result['lstm'][m2]['desc_stats'].mean, partial_result['lstm'][m2]['std_dev'], partial_result['nas'][m2]['desc_stats'].mean, partial_result['nas'][m2]['std_dev'], partial_result['ugrnn'][m2]['desc_stats'].mean, partial_result['ugrnn'][m2]['std_dev'])
+partial_result = result['control']
+print('control & {0:.2f} $\\pm$ {1:.2f} & {2:.2f} $\\pm$ {3:.2f} & {4:.2f} $\\pm$ {5:.2f} \\\\').format(partial_result['lstm'][m2]['desc_stats'].mean, partial_result['lstm'][m2]['std_dev'], partial_result['nas'][m2]['desc_stats'].mean, partial_result['nas'][m2]['std_dev'], partial_result['ugrnn'][m2]['desc_stats'].mean, partial_result['ugrnn'][m2]['std_dev'])
 partial_result = result['interval']
 print('&interval  & {0:.2f} $\\pm$ {1:.2f} & {2:.2f} $\\pm$ {3:.2f} & {4:.2f} $\\pm$ {5:.2f} \\\\').format(partial_result['lstm'][m2]['desc_stats'].mean, partial_result['lstm'][m2]['std_dev'], partial_result['nas'][m2]['desc_stats'].mean, partial_result['nas'][m2]['std_dev'], partial_result['ugrnn'][m2]['desc_stats'].mean, partial_result['ugrnn'][m2]['std_dev'])
 partial_result = result['db12']
 print('&db12  & {0:.2f} $\\pm$ {1:.2f} & {2:.2f} $\\pm$ {3:.2f} & {4:.2f} $\\pm$ {5:.2f} \\\\').format(partial_result['lstm'][m2]['desc_stats'].mean, partial_result['lstm'][m2]['std_dev'], partial_result['nas'][m2]['desc_stats'].mean, partial_result['nas'][m2]['std_dev'], partial_result['ugrnn'][m2]['desc_stats'].mean, partial_result['ugrnn'][m2]['std_dev'])
 print '\\hline'
 print '\\multirow{ 3}{*}{m3} &  '
-partial_result = result['base']
-print('BASE  & {0:.2f} $\\pm$ {1:.2f} & {2:.2f} $\\pm$ {3:.2f} & {4:.2f} $\\pm$ {5:.2f} \\\\').format(partial_result['lstm'][m3]['desc_stats'].mean, partial_result['lstm'][m3]['std_dev'], partial_result['nas'][m3]['desc_stats'].mean, partial_result['nas'][m3]['std_dev'], partial_result['ugrnn'][m3]['desc_stats'].mean, partial_result['ugrnn'][m3]['std_dev'])
+partial_result = result['control']
+print('control & {0:.2f} $\\pm$ {1:.2f} & {2:.2f} $\\pm$ {3:.2f} & {4:.2f} $\\pm$ {5:.2f} \\\\').format(partial_result['lstm'][m3]['desc_stats'].mean, partial_result['lstm'][m3]['std_dev'], partial_result['nas'][m3]['desc_stats'].mean, partial_result['nas'][m3]['std_dev'], partial_result['ugrnn'][m3]['desc_stats'].mean, partial_result['ugrnn'][m3]['std_dev'])
 partial_result = result['interval']
 print('&interval  & {0:.2f} $\\pm$ {1:.2f} & {2:.2f} $\\pm$ {3:.2f} & {4:.2f} $\\pm$ {5:.2f} \\\\').format(partial_result['lstm'][m3]['desc_stats'].mean, partial_result['lstm'][m3]['std_dev'], partial_result['nas'][m3]['desc_stats'].mean, partial_result['nas'][m3]['std_dev'], partial_result['ugrnn'][m3]['desc_stats'].mean, partial_result['ugrnn'][m3]['std_dev'])
 partial_result = result['db12']

@@ -2,12 +2,17 @@
 
 import os
 import pickle
+import argparse
 
-import sys 
-sys.path.append('..')
 import music_geometry_eval
 
 from scipy import stats
+
+parser = argparse.ArgumentParser(
+                    formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+parser.add_argument('--pickles_dir', type=str, default='~/experiments/generated/song_sets',
+                    help='data directory containing dataset pickles')
+args = parser.parse_args()
 
 
 def avg(song):
@@ -26,9 +31,9 @@ minimal_song_size = 12
 
 
 base_name = 'train'
-output_dir = '~/datasets/pickles/'
 
-songs_list = pickle.load(open(output_dir + base_name + '/' + base_name + '_song_list_cleaned.p', "rb"))
+# songs_list = pickle.load(open(args.pickles_dir + base_name + '/' + base_name + '_song_list_cleaned.p', "rb"))
+songs_list = pickle.load(open(args.pickles_dir + '/' + base_name + '_song_list_cleaned.p', "rb"))
 
 for song in songs_list:
 	if len(song) >= minimal_song_size:
