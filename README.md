@@ -53,6 +53,11 @@ unzip dataset.zip -d dataset/
 rm dataset.zip 
 ```
 
+You can also make some unit test to the pickles
+```
+python rnn-cells-music-paper/paper_scripts/unittestdatacreation.py -v
+```
+
 Run the script which makes 45 experiements (the 3 dataset variations, with the 3 cell types and number of layers from 1 to 5), time will depend on the GPU hardware, in an Nvidia m1000 it takes around a week
 ```
 ./rnn-cells-music-paper/paper_scripts/bashlayerscompleteexperimet.sh 
@@ -81,7 +86,7 @@ python rnn-cells-music-paper/paper_scripts/eval_n_songs.py --generated_dir ~/exa
 ```
 After that create a folder and move each of the most representative songs there, this script will generate the latex code for table with those metrics
 ```
-python rnn-cells-music-paper/paper_scripts/eval_songs.py --songs_folder ~/exampleresearch/experiments/most_repres_songs > ~/exampleresearch/experiments/metrics_eval_most_repres_songs.txt
+python rnn-cells-music-paper/paper_scripts/eval_most_rep_songs.py --songs_folder ~/exampleresearch/experiments/most_repres_songs > ~/exampleresearch/experiments/metrics_eval_most_repres_songs.txt
 ```
 
 In order to analyse it, it is necessary to have a base line applying the metrics to the dataset:
@@ -93,6 +98,12 @@ Once you compile the latex tables, they will loke like:
 [imagen]()
 [imagen]()
 
+Now, you can use the scripts in template_scripts, to transform the midi files in mp3, wav and jpg, however, the images aren't very flexible from console, seem there's no way to export to png from console indicating the dimensions, so I recommend:
+
+- you can use mid_2_wav and mid_2_mp3 to get the audios
+- open the midis in musescore, change the dimension in design->page settings
+- save as .mscz
+- export as png (even so the console doesn't work, export each png manually)
 
 
 complete layers
@@ -100,6 +111,10 @@ generated songs
 dataset metrics
 cost function val
 embeddings
+
+### Other scripts
+the scripts in scripts_for_supercomputing are modified versions of the training script for 6 of the experiemnts which I trained in a cluster environment in HPC centre [Apolo](http://www.eafit.edu.co/centros/apolo/Paginas/technical-specification.aspx). It works with slurm as cluster management and job scheduling system, so also the slurm scripts are provided.
+
 ### Code
 [Paper scripts](https://github.com/sebasgverde/rnn-cells-music-paper)
 [RNN model](https://github.com/sebasgverde/rnnMusicSeqGenerator)
