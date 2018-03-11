@@ -58,6 +58,7 @@ You can also make some unit test to the pickles
 python rnn-cells-music-paper/paper_scripts/unittestdatacreation.py -v
 ```
 
+#### Optimal number of layers
 Run the script which makes 45 experiements (the 3 dataset variations, with the 3 cell types and number of layers from 1 to 5), time will depend on the GPU hardware, in an Nvidia m1000 it takes around a week
 ```
 ./rnn-cells-music-paper/paper_scripts/bashlayerscompleteexperimet.sh 
@@ -70,6 +71,9 @@ tensorboard --log_dir models/control/lstm/
 ```
 In the "Scalars" of tensorboard you will see a graph like this:
 [insert image here]()
+
+#### Generating songs
+
 
 Now that we have reduced the problem to 9 models (best learning curve for each pair datset-cell), we will generate 100 songs with each model, using always the same seed and size (just modify the generate9timesn script with the apropiate layer number)
 ```
@@ -89,6 +93,8 @@ After that create a folder and move each of the most representative songs there,
 python rnn-cells-music-paper/paper_scripts/eval_most_rep_songs.py --songs_folder ~/exampleresearch/experiments/most_repres_songs > ~/exampleresearch/experiments/metrics_eval_most_repres_songs.txt
 ```
 
+#### Analysing tonality of the models quantitativaly
+
 In order to analyse it, it is necessary to have a base line applying the metrics to the dataset:
 ```
 python rnn-cells-music-paper/paper_scripts/dataset_metric_eval.py --pickles_dir ~/exampleresearch/dataset > ~/exampleresearch/experiments/metrics_eval_dataset.txt
@@ -105,12 +111,31 @@ Now, you can use the scripts in template_scripts, to transform the midi files in
 - save as .mscz
 - export as png (even so the console doesn't work, export each png manually)
 
+#### Analysing Embeddings Representation of the songs
+To visualize the embeddings, we will se the tensorboard embeddings option, in the case of the paper I used the lstm models for the 3 datasets since these are the most common cells
 
-complete layers
-generated songs
-dataset metrics
-cost function val
-embeddings
+```
+tensorboard --logdir control/lstm/lstm3/
+tensorboard --logdir interval/lstm/lstm4/
+tensorboard --logdir db12/lstm/lstm4/
+```
+
+Then in tersorboard, choose a point and you wil see the nearest points with euclidean and cosine distance.
+
+#### Cost function validation
+The last experiment to cover the whole paper is the cross-entropy validation as cost function. First we will train a model varying the "save_every" parameter to have different examples of cross-entropy.
+
+```
+python 'rnnMusicSeqGenerator/train.py' --save_dir ~/exampleresearch/experiments/cost_function_validation --log_dir ~/exampleresearch/experiments/cost_function_validation --data_dir ~/exampleresearch/dataset/train_final_cleaned.p --num_epochs 50 --batch_size 15 --training_mode='melody' --model 'lstm' --num_layers 2 --save_every 250 --max_models_keep 10
+```
+
+Finally, we manually generate a song with the same seed and size for each model, for example
+```
+mkdir ~/exampleresearch/experiments/cost_function_validation/songs
+python 'rnnMusicSeqGenerator/sample.py' --ckpt_dir ~/exampleresearch/experiments/cost_function_validation -n 30 --output_uri ~/exampleresearch/experiments/cost_function_validation/songs/output_controlcase_loss_4.67827-0.mid --seed '60 62 64 62' --sampling_mode='melody' --ckpt_file ~/exampleresearch/experiments/cost_function_validation/model.ckpt_loss_4.67827-0
+```
+
+
 
 ### Other scripts
 the scripts in scripts_for_supercomputing are modified versions of the training script for 6 of the experiemnts which I trained in a cluster environment in HPC centre [Apolo](http://www.eafit.edu.co/centros/apolo/Paginas/technical-specification.aspx). It works with slurm as cluster management and job scheduling system, so also the slurm scripts are provided.
