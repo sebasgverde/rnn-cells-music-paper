@@ -2,14 +2,22 @@
 import pickle
 import os
 import unittest
+# import argparse
 
 # python unittestdatacreation.py -v
+
+# parser = argparse.ArgumentParser(
+#                     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+# parser.add_argument('--output_dir', type=str, default='~/dataset',
+#                     help='data directory containing dataset pickles')
+# args = parser.parse_args()
 
 base_name = 'train'
 files_count = '9552'
 
-output_dir = '~/datasets/pickles/'
-output_dir += base_name + '/'
+# output_dir = args.output_dir + '/' + base_name + '/'
+output_dir = os.path.expanduser('~') + '/exampleresearch/dataset/'
+
 
 tensor = pickle.load(open(output_dir + base_name + '_song_list.p', "rb"))
 clean_tensor = pickle.load(open(output_dir + base_name + '_song_list_cleaned.p', "rb"))
