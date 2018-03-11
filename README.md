@@ -1,19 +1,28 @@
 # Sequence Generation using Deep Recurrent Networks: A study case in music.
 Songs, code and datasets to replicate the research and the specific reuslts of the paper
+
 [Paper]() [Github](https://github.com/sebasgverde/rnn-cells-music-paper)
----
 
 ## Abstract
 Automatic generation of sequences is a highly explored field in the last years. In particular, natural language processing and automatic music composition have gained importance due to the recent advances in machine learning and Neural Networks with intrinsic memory mechanisms such as Recurrent Neural Networks. This paper evaluates different types of memory mechanisms (memory cells) and analyze their performance in the field of music composition. The proposed approach considers music theory concepts such as transposition, and data transformations (embeddings) improve the quality of the generated melodies. The performance of the proposed architecture is evaluated using quantitative metrics to measure the tonality of a musical composition. 
 
 ---
 ## Datasets and Pretrained Models
+
 [Datasets](https://www.dropbox.com/sh/xyr47x5ck48krvx/AAAprJDo2at6AlEiWVp-U9cqa?dl=0)
+
 [Network Weigths]()
 
 ---
 
 ## Demos
+#### Final models representative songs
+[![](https://sebasgverde.github.io/rnn-cells-music-paper/images/generated_songs_demo.png)](https://youtu.be/FGUIEshh6WU)
+
+#### Training evolution
+[![](https://sebasgverde.github.io/rnn-cells-music-paper/images/cost_validation_songs_demo.png)](https://youtu.be/sIUu5mYU0l8)
+
+![Image example](https://sebasgverde.github.io/balancedBinaryTrees/partsGUI.png)
 
 ## Research Replication
 Note: All is done asuming you are in your home directory
