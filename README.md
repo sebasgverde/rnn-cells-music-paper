@@ -22,8 +22,6 @@ Automatic generation of sequences is a highly explored field in the last years. 
 #### Training evolution
 [![](https://sebasgverde.github.io/rnn-cells-music-paper/images/cost_validation_songs_demo.png)](https://youtu.be/sIUu5mYU0l8)
 
-![Image example](https://sebasgverde.github.io/balancedBinaryTrees/partsGUI.png)
-
 ## Research Replication
 Note: All is done asuming you are in your home directory
 
@@ -79,7 +77,8 @@ It is time now to get the learning curves graphs to reduce the research to 9 mod
 tensorboard --log_dir models/control/lstm/ 
 ```
 In the "Scalars" of tensorboard you will see a graph like this:
-[insert image here]()
+
+![](https://sebasgverde.github.io/rnn-cells-music-paper/images/lstm_learning_curves.png)
 
 #### Generating songs
 
@@ -91,7 +90,7 @@ mkdir ~/exampleresearch/experiments/generated
 ./rnn-cells-music-paper/paper_scripts/generate9timesn.sh  
 ```
 This will create 9 folders, each with 200 files, the 100 songs as midi and as pickle file with the song as list.
-[imagen]()
+![](https://sebasgverde.github.io/rnn-cells-music-paper/images/song_generated_files.png)
 
 The next step is tou use the music_geometry_eval library to test the tonality of the models. This script, will apply 3 quantitative metrics (Conjunct Melody Motion, Limited Macroharmony and Centricity) to each set of 100 songs. The output file will have 9 tables with all the songs, different latex tables with summary information, the list of the most representative song of each model (the song whose metrics have the lower euclidean distance to the mean of the 100) and finally, a latex table with the mean and standard deviation for each metric in each model for each 100 song set.
 ```
@@ -108,10 +107,12 @@ In order to analyse it, it is necessary to have a base line applying the metrics
 ```
 python rnn-cells-music-paper/paper_scripts/dataset_metric_eval.py --pickles_dir ~/exampleresearch/dataset > ~/exampleresearch/experiments/metrics_eval_dataset.txt
 ```
-Once you compile the latex tables, they will loke like:
-[imagen]()
-[imagen]()
-[imagen]()
+Once you compile the latex tables, they will loke like this:
+![](https://sebasgverde.github.io/rnn-cells-music-paper/images/metric_table_dataset.png)
+
+![](https://sebasgverde.github.io/rnn-cells-music-paper/images/metric_table_models.png)
+
+![](https://sebasgverde.github.io/rnn-cells-music-paper/images/metric_table_most_rep_songs.png)
 
 Now, you can use the scripts in template_scripts, to transform the midi files in mp3, wav and jpg, however, the images aren't very flexible from console, seem there's no way to export to png from console indicating the dimensions, so I recommend:
 
@@ -130,6 +131,8 @@ tensorboard --logdir db12/lstm/lstm4/
 ```
 
 Then in tersorboard, choose a point and you wil see the nearest points with euclidean and cosine distance.
+![](https://sebasgverde.github.io/rnn-cells-music-paper/images/embeddings.png)
+
 
 #### Cost function validation
 The last experiment to cover the whole paper is the cross-entropy validation as cost function. First we will train a model varying the "save_every" parameter to have different examples of cross-entropy.
@@ -151,14 +154,9 @@ the scripts in scripts_for_supercomputing are modified versions of the training 
 
 ### Code
 [Paper scripts](https://github.com/sebasgverde/rnn-cells-music-paper)
+
 [RNN model](https://github.com/sebasgverde/rnnMusicSeqGenerator)
+
 [Library for midi manipulation](https://github.com/sebasgverde/music-geometry-eval)
+
 [Library for music evaluation](https://github.com/sebasgverde/midi-manager)
-
----
-
-all is like 
-
-```
-python $SCRIPT_PATH --save_dir "$ROOT_FOLDER/$CELL_TYPE$NUM_LAYERS" --log_dir "$ROOT_FOLDER/$CELL_TYPE$NUM_LAYERS" --data_dir=$DATA_DIR  --num_epochs $EPOCHS --batch_size $BATCH_SIZE --training_mode=$TRAINING_MODE --num_layers=$NUM_LAYERS --model=$CELL_TYPE
-```
