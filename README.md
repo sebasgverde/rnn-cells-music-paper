@@ -32,7 +32,7 @@ Create a root folder and clone the scripts and model repositories:
 mkdir exampleresearch
 cd exampleresearch
 git clone https://github.com/sebasgverde/rnn-cells-music-paper.git
-git clone https://github.com/sebasgverde/rnnMusicSeqGenerator.git
+git clone -b 1.0 --single-branch https://github.com/sebasgverde/rnnMusicSeqGenerator
 ```
 
 create a virtual env using the requierements in rnnMusicSeqGenerator
@@ -43,15 +43,14 @@ pip install -r ~/exampleresearch/rnnMusicSeqGenerator/requirements.txt
 
 For this two special libraries which were developed by me you have two options, I recommend to install them also in the virtual env
 ```
-
-pip install music_geometry_eval
-pip install midi_manager
+pip install music-geometry-eval==1.0
+pip install midi-manager==1.0
 ```
 
 but you can also clone the repositories and use them as normal packages
 ```
-git clone https://github.com/sebasgverde/music-geometry-eval.git
-git clone https://github.com/sebasgverde/midi-manager.git
+git clone -b 1.0 --single-branch https://github.com/sebasgverde/music-geometry-eval.git
+git clone -b 1.0 --single-branch https://github.com/sebasgverde/midi-manager.git
 ```
 
 Download the datasets:
@@ -69,6 +68,16 @@ python rnn-cells-music-paper/paper_scripts/unittestdatacreation.py -v
 
 Note: If instead of replicate the research you want to specifically replicate the paper results you can just skip the next two sections and download the network weights and the 900 generated songs.
 ```
+wget -N weigthsfinishingin1 -O model_weights.zip
+unzip model_weights.zip -d ~/exampleresearch/
+rm model_weights.zip 
+```
+
+```
+mkdir ~/exampleresearch/experiments/
+wget -N https://www.dropbox.com/s/v2w18qoos8quz8c/generated100.zip?dl=1 -O generated_songs.zip
+unzip generated_songs.zip -d ~/exampleresearch/experiments/
+rm generated_songs.zip 
 ```
 
 #### Optimal number of layers
@@ -99,7 +108,8 @@ mkdir ~/exampleresearch/experiments/generated
 This will create 9 folders, each with 200 files, the 100 songs as midi and as pickle file with the song as list.
 ![](https://sebasgverde.github.io/rnn-cells-music-paper/images/song_generated_files.png)
 
-The next step is tou use the music_geometry_eval library to test the tonality of the models. This script, will apply 3 quantitative metrics (Conjunct Melody Motion, Limited Macroharmony and Centricity) to each set of 100 songs. The output file will have 9 tables with all the songs, different latex tables with summary information, the list of the most representative song of each model (the song whose metrics have the lower euclidean distance to the mean of the 100) and finally, a latex table with the mean and standard deviation for each metric in each model for each 100 song set.
+#### Models metric evaluation
+The next step is to use the music_geometry_eval library to test the tonality of the models. This script, will apply 3 quantitative metrics (Conjunct Melody Motion, Limited Macroharmony and Centricity) to each set of 100 songs. The output file will have 9 tables with all the songs, different latex tables with summary information, the list of the most representative song of each model (the song whose metrics have the lower euclidean distance to the mean of the 100) and finally, a latex table with the mean and standard deviation for each metric in each model for each 100 song set.
 ```
 python rnn-cells-music-paper/paper_scripts/eval_n_songs.py --generated_dir ~/exampleresearch/experiments/generated > ~/exampleresearch/experiments/metrics_eval_100_songs.txt
 ```
@@ -166,8 +176,8 @@ the scripts in scripts_for_supercomputing are modified versions of the training 
 ### Code
 [Paper scripts](https://github.com/sebasgverde/rnn-cells-music-paper)
 
-[RNN model](https://github.com/sebasgverde/rnnMusicSeqGenerator)
+[RNN model 1.0](https://github.com/sebasgverde/rnnMusicSeqGenerator)
 
-[Library for midi manipulation](https://github.com/sebasgverde/music-geometry-eval)
+[Library for midi manipulation 1.0](https://github.com/sebasgverde/music-geometry-eval)
 
-[Library for music evaluation](https://github.com/sebasgverde/midi-manager)
+[Library for music evaluation 1.0](https://github.com/sebasgverde/midi-manager)
