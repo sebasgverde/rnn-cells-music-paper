@@ -108,10 +108,14 @@ In order to analyse it, it is necessary to have a base line applying the metrics
 python rnn-cells-music-paper/paper_scripts/dataset_metric_eval.py --pickles_dir ~/exampleresearch/dataset > ~/exampleresearch/experiments/metrics_eval_dataset.txt
 ```
 Once you compile the latex tables, they will loke like this:
+
+#### Dataset
 ![](https://sebasgverde.github.io/rnn-cells-music-paper/images/metric_table_dataset.png)
 
+#### Models
 ![](https://sebasgverde.github.io/rnn-cells-music-paper/images/metric_table_models.png)
 
+#### Most Representative Songs
 ![](https://sebasgverde.github.io/rnn-cells-music-paper/images/metric_table_most_rep_songs.png)
 
 Now, you can use the scripts in template_scripts, to transform the midi files in mp3, wav and jpg, however, the images aren't very flexible from console, seem there's no way to export to png from console indicating the dimensions, so I recommend:
