@@ -13,6 +13,8 @@ Automatic generation of sequences is a highly explored field in the last years. 
 
 [Network Weigths]()
 
+[Midi songs final models](https://www.dropbox.com/s/v2w18qoos8quz8c/generated100.zip?dl=0)
+
 ---
 
 ## Demos
@@ -65,7 +67,12 @@ You can also make some unit test to the pickles
 python rnn-cells-music-paper/paper_scripts/unittestdatacreation.py -v
 ```
 
+Note: If instead of replicate the research you want to specifically replicate the paper results you can just skip the next two sections and download the network weights and the 900 generated songs.
+```
+```
+
 #### Optimal number of layers
+
 Run the script which makes 45 experiements (the 3 dataset variations, with the 3 cell types and number of layers from 1 to 5), time will depend on the GPU hardware, in an Nvidia m1000 it takes around a week
 ```
 ./rnn-cells-music-paper/paper_scripts/bashlayerscompleteexperimet.sh 
