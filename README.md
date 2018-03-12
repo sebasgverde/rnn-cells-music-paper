@@ -1,5 +1,5 @@
 # <center>Sequence Generation using Deep Recurrent Networks and Embedding Representations: A study case in music.</center>
-<center>Songs, code and datasets to replicate the research and the specific reuslts of the paper</center>
+<center>Songs, code and datasets to replicate the research and the specific results of the paper</center>
 
 
 <center>Sebastián García Valencia</center>
@@ -10,10 +10,10 @@
 ![](https://sebasgverde.github.io/rnn-cells-music-paper/images/RNNtraining.png)
 ![](https://sebasgverde.github.io/rnn-cells-music-paper/images/RNNsample.png)
 ## Abstract
-Automatic generation of sequences is a highly explored field in the last years. In particular, natural language processing and automatic music composition have gained importance due to the recent advances in machine learning and Neural Networks with intrinsic memory mechanisms such as Recurrent Neural Networks. This paper evaluates different types of memory mechanisms (memory cells) and analyze their performance in the field of music composition. The proposed approach considers music theory concepts such as transposition, and data transformations (embeddings) improve the quality of the generated melodies. The performance of the proposed architecture is evaluated using quantitative metrics to measure the tonality of a musical composition. 
+Automatic generation of sequences is a highly explored field in the last years. In particular, natural language processing and automatic music composition have gained importance due to the recent advances in machine learning and Neural Networks with intrinsic memory mechanisms such as Recurrent Neural Networks. This paper evaluates different types of memory mechanisms (memory cells) and analyzes their performance in the field of music composition. The proposed approach considers music theory concepts such as transposition, and data transformations (embeddings) improve the quality of the generated melodies. The performance of the proposed architecture is evaluated using quantitative metrics to measure the tonality of a musical composition. 
 
 
-## Datasets, Model Weigths and more
+## Datasets, Model Weights and more
 
 - [Datasets](https://www.dropbox.com/sh/xyr47x5ck48krvx/AAAprJDo2at6AlEiWVp-U9cqa?dl=0)
 - [Network Weigths]()
@@ -35,7 +35,7 @@ Click the images to see a youtube video
 [![](https://sebasgverde.github.io/rnn-cells-music-paper/images/cost_validation_songs_demo.png)](https://youtu.be/sIUu5mYU0l8)
 
 ## Research Replication
-Note: All is done asuming you are in your home directory
+Note: All is done assuming you are in your home directory
 
 #### Set the environment
 Create a root folder and clone the scripts and model repositories:
@@ -46,13 +46,13 @@ git clone https://github.com/sebasgverde/rnn-cells-music-paper.git
 git clone -b 1.0 --single-branch https://github.com/sebasgverde/rnnMusicSeqGenerator
 ```
 
-create a virtual env using the requierements in rnnMusicSeqGenerator
+create a virtual env using the requirements in rnnMusicSeqGenerator
 ```
 mkvirtualenv exampleresearchmusic
 pip install -r ~/exampleresearch/rnnMusicSeqGenerator/requirements.txt
 ```
 
-For this two special libraries which were developed by me you have two options, I recommend to install them also in the virtual env
+For this two special libraries which were developed by me, you have two options, I recommend to install them also in the virtual env
 ```
 pip install music-geometry-eval==1.0
 pip install midi-manager==1.0
@@ -82,7 +82,7 @@ python rnn-cells-music-paper/paper_scripts/unittestdatacreation.py -v
 
 ---
 
-**Special Note**: If instead of replicate the research you want to specifically replicate the paper results you can just [skip](https://sebasgverde.github.io/rnn-cells-music-paper/#models-metric-evaluation) the next two sections and download the network weights and the 900 generated songs.
+**Special Note**: If instead of replicating the research you want to specifically reproduce the paper results, you can just [skip](https://sebasgverde.github.io/rnn-cells-music-paper/#models-metric-evaluation) the next two sections and download the network weights and the 900 generated songs.
 ```
 wget -N weigthsfinishingin1 -O model_weights.zip
 unzip model_weights.zip -d ~/exampleresearch/
@@ -99,7 +99,7 @@ rm generated_songs.zip
 
 #### Optimal number of layers
 
-Run the script which makes 45 experiements (the 3 dataset variations, with the 3 cell types and number of layers from 1 to 5), time will depend on the GPU hardware, in an Nvidia m1000 it takes around a week
+Run the script which does 45 experiments (the 3 dataset variations, with the 3 cell types and number of layers from 1 to 5), time will depend on the GPU hardware, in a Nvidia m1000 it takes around a week
 ```
 ./rnn-cells-music-paper/paper_scripts/bashlayerscompleteexperimet.sh 
 ```
@@ -116,32 +116,32 @@ In the "Scalars" of tensorboard you will see a graph like this:
 #### Generating songs
 
 
-Now that we have reduced the problem to 9 models (best learning curve for each pair datset-cell), we will generate 100 songs with each model, using always the same seed and size (just modify the generate9timesn script with the apropiate layer number)
+Now that we have reduced the problem to 9 models (best learning curve for each pair dataset-cell), we will generate 100 songs with each model, always using the same seed and size (just modify the generate9timesn script with the appropriate layer number)
 ```
 mkdir ~/exampleresearch/experiments/
 mkdir ~/exampleresearch/experiments/generated
 ./rnn-cells-music-paper/paper_scripts/generate9timesn.sh  
 ```
-This will create 9 folders, each with 200 files, the 100 songs as midi and as pickle file with the song as list.
+This will create 9 folders, each with 200 files, the 100 songs as midi and as pickle file with the song as a list.
 ![](https://sebasgverde.github.io/rnn-cells-music-paper/images/song_generated_files.png)
 
 #### Models metric evaluation
-The next step is to use the music_geometry_eval library to test the tonality of the models. This script, will apply 3 quantitative metrics (Conjunct Melody Motion, Limited Macroharmony and Centricity) to each set of 100 songs. The output file will have 9 tables with all the songs, different latex tables with summary information, the list of the most representative song of each model (the song whose metrics have the lower euclidean distance to the mean of the 100) and finally, a latex table with the mean and standard deviation for each metric in each model for each 100 song set.
+The next step is to use the music_geometry_eval library to test the tonality of the models. This script will apply 3 quantitative metrics (Conjunct Melody Motion, Limited Macroharmony and Centricity) to each set of 100 songs. The output file will have 9 tables with all the songs, different latex tables with summary information, the list of the most representative song of each model (the song whose metrics have the lower euclidean distance to the mean of the 100) and finally, a latex table with the mean and standard deviation for each metric in each model for each 100 song set.
 ```
 python rnn-cells-music-paper/paper_scripts/eval_n_songs.py --generated_dir ~/exampleresearch/experiments/generated > ~/exampleresearch/experiments/metrics_eval_100_songs.txt
 ```
-After that create a folder and move each of the most representative songs there, this script will generate the latex code for table with those metrics
+After that, create a folder and move each of the most representative songs there, this script will generate the latex code for the table with those metrics
 ```
 python rnn-cells-music-paper/paper_scripts/eval_most_rep_songs.py --songs_folder ~/exampleresearch/experiments/most_repres_songs > ~/exampleresearch/experiments/metrics_eval_most_repres_songs.txt
 ```
 
-#### Analysing tonality of the models quantitativaly
+#### Analysing tonality of the models quantitatively
 
-In order to analyse it, it is necessary to have a base line applying the metrics to the dataset:
+In order to analyze it, it is necessary to have a baseline applying the metrics to the dataset:
 ```
 python rnn-cells-music-paper/paper_scripts/dataset_metric_eval.py --pickles_dir ~/exampleresearch/dataset > ~/exampleresearch/experiments/metrics_eval_dataset.txt
 ```
-Once you compile the latex tables, they will loke like this:
+Once you compile the latex tables, they will look like this:
 
 #### Dataset
 ![](https://sebasgverde.github.io/rnn-cells-music-paper/images/metric_table_dataset.png)
@@ -160,7 +160,7 @@ Now, you can use the scripts in template_scripts, to transform the midi files in
 - export as png (even so the console doesn't work, export each png manually)
 
 #### Analysing Embeddings Representation of the songs
-To visualize the embeddings, we will se the tensorboard embeddings option, in the case of the paper I used the lstm models for the 3 datasets since these are the most common cells
+To visualize the embeddings, we will us the tensorboard embeddings option, in the case of the paper I used the lstm models for the 3 datasets since these are the most common cells
 
 ```
 tensorboard --logdir control/lstm/lstm3/
@@ -168,12 +168,12 @@ tensorboard --logdir interval/lstm/lstm4/
 tensorboard --logdir db12/lstm/lstm4/
 ```
 
-Then in tersorboard, choose a point and you wil see the nearest points with euclidean and cosine distance.
+Then in tersorboard, choose a point and you will see the nearest points with Euclidean and cosine distance.
 ![](https://sebasgverde.github.io/rnn-cells-music-paper/images/embeddings.png)
 
 
 #### Cost function validation
-The last experiment to cover the whole paper is the cross-entropy validation as cost function. First we will train a model varying the "save_every" parameter to have different examples of cross-entropy.
+The last experiment to cover the whole paper is the cross-entropy validation as the cost function. First, we will train a model varying the "save_every" parameter to have different examples of cross-entropy.
 
 ```
 python 'rnnMusicSeqGenerator/train.py' --save_dir ~/exampleresearch/experiments/cost_function_validation --log_dir ~/exampleresearch/experiments/cost_function_validation --data_dir ~/exampleresearch/dataset/train_final_cleaned.p --num_epochs 50 --batch_size 15 --training_mode='melody' --model 'lstm' --num_layers 2 --save_every 250 --max_models_keep 10
@@ -188,5 +188,5 @@ python 'rnnMusicSeqGenerator/sample.py' --ckpt_dir ~/exampleresearch/experiments
 
 
 ### Other scripts
-the scripts in scripts_for_supercomputing are modified versions of the training script for 6 of the experiemnts which I trained in a cluster environment in HPC centre [Apolo](http://www.eafit.edu.co/centros/apolo/Paginas/technical-specification.aspx). It works with slurm as cluster management and job scheduling system, so also the slurm scripts are provided.
+The scripts in scripts_for_supercomputing are modified versions of the training script for 6 of the experiments which I trained in a cluster environment in HPC centre [Apolo](http://www.eafit.edu.co/centros/apolo/Paginas/technical-specification.aspx). It works with slurm as cluster management and job scheduling system, so also the slurm scripts are provided.
 
