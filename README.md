@@ -42,7 +42,7 @@ Create a root folder and clone the scripts and model repositories:
 ```
 mkdir exampleresearch
 cd exampleresearch
-git clone https://github.com/sebasgverde/rnn-cells-music-paper.git
+git clone https://github.com/sebasgverde/rnnpaper
 git clone -b 1.0 --single-branch https://github.com/sebasgverde/rnnMusicSeqGenerator
 ```
 
