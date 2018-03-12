@@ -1,8 +1,6 @@
-# Sequence Generation using Deep Recurrent Networks and Embedding Representations: A study case in transposition free music.
-Sebastian Garcia Valencia
-
-
-Songs, code and datasets to replicate the research and the specific reuslts of the paper
+<center># Sequence Generation using Deep Recurrent Networks and Embedding Representations: A study case in transposition free music.</center>
+<center>Songs, code and datasets to replicate the research and the specific reuslts of the paper</center>
+<center>Sebastián García Valencia</center>
 
 [Paper]() [Github](https://github.com/sebasgverde/rnn-cells-music-paper)
 
@@ -33,7 +31,7 @@ Automatic generation of sequences is a highly explored field in the last years. 
 Click the images to see a youtube video
 
 #### Final models representative songs
-[![](https://sebasgverde.github.io/rnn-cells-music-paper/images/generated_songs_demo.png)](https://youtu.be/FGUIEshh6WU)
+<center>[![](https://sebasgverde.github.io/rnn-cells-music-paper/images/generated_songs_demo.png)](https://youtu.be/FGUIEshh6WU)</center>
 
 #### Training evolution
 [![](https://sebasgverde.github.io/rnn-cells-music-paper/images/cost_validation_songs_demo.png)](https://youtu.be/sIUu5mYU0l8)
