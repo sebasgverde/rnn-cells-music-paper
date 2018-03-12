@@ -1,8 +1,13 @@
 # Sequence Generation using Deep Recurrent Networks: A study case in music.
+Sebastian Garcia Valencia
+
+---
 Songs, code and datasets to replicate the research and the specific reuslts of the paper
 
 [Paper]() [Github](https://github.com/sebasgverde/rnn-cells-music-paper)
 
+![](https://sebasgverde.github.io/rnn-cells-music-paper/images/RNNtraining.png)
+![](https://sebasgverde.github.io/rnn-cells-music-paper/images/RNNsample.png)
 ## Abstract
 Automatic generation of sequences is a highly explored field in the last years. In particular, natural language processing and automatic music composition have gained importance due to the recent advances in machine learning and Neural Networks with intrinsic memory mechanisms such as Recurrent Neural Networks. This paper evaluates different types of memory mechanisms (memory cells) and analyze their performance in the field of music composition. The proposed approach considers music theory concepts such as transposition, and data transformations (embeddings) improve the quality of the generated melodies. The performance of the proposed architecture is evaluated using quantitative metrics to measure the tonality of a musical composition. 
 
@@ -15,9 +20,20 @@ Automatic generation of sequences is a highly explored field in the last years. 
 
 [Midi songs final models](https://www.dropbox.com/s/v2w18qoos8quz8c/generated100.zip?dl=0)
 
+### Code
+[Paper scripts](https://github.com/sebasgverde/rnn-cells-music-paper)
+
+[RNN model 1.0](https://github.com/sebasgverde/rnnMusicSeqGenerator)
+
+[Library for midi manipulation 1.0](https://github.com/sebasgverde/music-geometry-eval)
+
+[Library for music evaluation 1.0](https://github.com/sebasgverde/midi-manager)
+
 ---
 
 ## Demos
+Click the images to see a youtube video
+
 #### Final models representative songs
 [![](https://sebasgverde.github.io/rnn-cells-music-paper/images/generated_songs_demo.png)](https://youtu.be/FGUIEshh6WU)
 
@@ -27,6 +43,7 @@ Automatic generation of sequences is a highly explored field in the last years. 
 ## Research Replication
 Note: All is done asuming you are in your home directory
 
+#### Set the environment
 Create a root folder and clone the scripts and model repositories:
 ```
 mkdir exampleresearch
@@ -53,6 +70,9 @@ git clone -b 1.0 --single-branch https://github.com/sebasgverde/music-geometry-e
 git clone -b 1.0 --single-branch https://github.com/sebasgverde/midi-manager.git
 ```
 
+#### Datasets
+The mono-midi-transposition-dataset is the result of series of transformations over the mono-MusicXML-dataset
+![](https://sebasgverde.github.io/rnn-cells-music-paper/images/datasetflow.png)
 Download the datasets:
 ```
 mkdir dataset
@@ -66,7 +86,9 @@ You can also make some unit test to the pickles
 python rnn-cells-music-paper/paper_scripts/unittestdatacreation.py -v
 ```
 
-Note: If instead of replicate the research you want to specifically replicate the paper results you can just skip the next two sections and download the network weights and the 900 generated songs.
+---
+
+**Special Note**: If instead of replicate the research you want to specifically replicate the paper results you can just [skip](https://sebasgverde.github.io/rnn-cells-music-paper/#models-metric-evaluation) the next two sections and download the network weights and the 900 generated songs.
 ```
 wget -N weigthsfinishingin1 -O model_weights.zip
 unzip model_weights.zip -d ~/exampleresearch/
@@ -79,6 +101,7 @@ wget -N https://www.dropbox.com/s/v2w18qoos8quz8c/generated100.zip?dl=1 -O gener
 unzip generated_songs.zip -d ~/exampleresearch/experiments/
 rm generated_songs.zip 
 ```
+---
 
 #### Optimal number of layers
 
@@ -173,11 +196,3 @@ python 'rnnMusicSeqGenerator/sample.py' --ckpt_dir ~/exampleresearch/experiments
 ### Other scripts
 the scripts in scripts_for_supercomputing are modified versions of the training script for 6 of the experiemnts which I trained in a cluster environment in HPC centre [Apolo](http://www.eafit.edu.co/centros/apolo/Paginas/technical-specification.aspx). It works with slurm as cluster management and job scheduling system, so also the slurm scripts are provided.
 
-### Code
-[Paper scripts](https://github.com/sebasgverde/rnn-cells-music-paper)
-
-[RNN model 1.0](https://github.com/sebasgverde/rnnMusicSeqGenerator)
-
-[Library for midi manipulation 1.0](https://github.com/sebasgverde/music-geometry-eval)
-
-[Library for music evaluation 1.0](https://github.com/sebasgverde/midi-manager)
