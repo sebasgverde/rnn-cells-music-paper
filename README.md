@@ -1,4 +1,4 @@
-# <center>Sequence Generation using Deep Recurrent Networks and Embedding Representations: A study case in transposition free music.</center>
+# <center>Sequence Generation using Deep Recurrent Networks and Embedding Representations: A study case in music.</center>
 <center>Songs, code and datasets to replicate the research and the specific reuslts of the paper</center>
 
 
@@ -13,22 +13,17 @@
 Automatic generation of sequences is a highly explored field in the last years. In particular, natural language processing and automatic music composition have gained importance due to the recent advances in machine learning and Neural Networks with intrinsic memory mechanisms such as Recurrent Neural Networks. This paper evaluates different types of memory mechanisms (memory cells) and analyze their performance in the field of music composition. The proposed approach considers music theory concepts such as transposition, and data transformations (embeddings) improve the quality of the generated melodies. The performance of the proposed architecture is evaluated using quantitative metrics to measure the tonality of a musical composition. 
 
 
-## Datasets and Pretrained Models
+## Datasets, Model Weigths and more
 
-[Datasets](https://www.dropbox.com/sh/xyr47x5ck48krvx/AAAprJDo2at6AlEiWVp-U9cqa?dl=0)
-
-[Network Weigths]()
-
-[Midi songs final models](https://www.dropbox.com/s/v2w18qoos8quz8c/generated100.zip?dl=0)
+- [Datasets](https://www.dropbox.com/sh/xyr47x5ck48krvx/AAAprJDo2at6AlEiWVp-U9cqa?dl=0)
+- [Network Weigths]()
+- [Midi songs final models](https://www.dropbox.com/s/v2w18qoos8quz8c/generated100.zip?dl=0)
 
 ## Code
-[Paper scripts](https://github.com/sebasgverde/rnn-cells-music-paper)
-
-[RNN model 1.0](https://github.com/sebasgverde/rnnMusicSeqGenerator)
-
-[Library for midi manipulation 1.0](https://github.com/sebasgverde/music-geometry-eval)
-
-[Library for music evaluation 1.0](https://github.com/sebasgverde/midi-manager)
+- [Paper scripts](https://github.com/sebasgverde/rnn-cells-music-paper)
+- [RNN model 1.0](https://github.com/sebasgverde/rnnMusicSeqGenerator)
+- [Library for midi manipulation 1.0](https://github.com/sebasgverde/music-geometry-eval)
+- [Library for music evaluation 1.0](https://github.com/sebasgverde/midi-manager)
 
 ## Demos
 Click the images to see a youtube video
