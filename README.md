@@ -1,9 +1,11 @@
 # <center>Sequence Generation using Deep Recurrent Networks and Embedding Representations: A study case in transposition free music.</center>
 <center>Songs, code and datasets to replicate the research and the specific reuslts of the paper</center>
 
+
 <center>Sebastián García Valencia</center>
 
-<center>[Paper]() [Github](https://github.com/sebasgverde/rnn-cells-music-paper)</center>
+
+[<center>Paper</center>]() [<center>Github</center>](https://github.com/sebasgverde/rnn-cells-music-paper)
 
 ![](https://sebasgverde.github.io/rnn-cells-music-paper/images/RNNtraining.png)
 ![](https://sebasgverde.github.io/rnn-cells-music-paper/images/RNNsample.png)
