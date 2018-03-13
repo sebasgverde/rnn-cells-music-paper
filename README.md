@@ -13,7 +13,7 @@ Automatic generation of sequences has been a highly explored field in the last y
 ## Datasets, Model Weights and more
 
 - [Datasets](https://www.dropbox.com/sh/xyr47x5ck48krvx/AAAprJDo2at6AlEiWVp-U9cqa?dl=0)
-- [Network Weigths]()
+- [Network Weigths](https://www.dropbox.com/s/34w1miaz6j01rw5/models.zip?dl=0)
 - [Midi songs final models](https://www.dropbox.com/s/v2w18qoos8quz8c/generated100.zip?dl=0)
 
 ## Code
@@ -81,7 +81,7 @@ python rnn-cells-music-paper/paper_scripts/unittestdatacreation.py -v
 
 **Special Note**: If instead of replicating the research you want to specifically reproduce the paper results, you can just [skip](https://sebasgverde.github.io/rnn-cells-music-paper/#models-metric-evaluation) the next two sections and download the network weights and the 900 generated songs.
 ```
-wget -N weigthsfinishingin1 -O model_weights.zip
+wget -N https://www.dropbox.com/s/34w1miaz6j01rw5/models.zip?dl=1 -O model_weights.zip
 unzip model_weights.zip -d ~/exampleresearch/
 rm model_weights.zip 
 ```
