@@ -160,9 +160,9 @@ Now, you can use the scripts in template_scripts, to transform the midi files in
 To visualize the embeddings, we will us the tensorboard embeddings option, in the case of the paper I used the lstm models for the 3 datasets since these are the most common cells
 
 ```
-tensorboard --logdir control/lstm/lstm3/
-tensorboard --logdir interval/lstm/lstm4/
-tensorboard --logdir db12/lstm/lstm4/
+tensorboard --logdir models/control/lstm/lstm3/
+tensorboard --logdir models/interval/lstm/lstm4/
+tensorboard --logdir models/db12/lstm/lstm4/
 ```
 
 Then in tersorboard, choose a point and you will see the nearest points with Euclidean and cosine distance.
