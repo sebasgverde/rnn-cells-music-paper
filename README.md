@@ -104,7 +104,7 @@ This will create the folder models, with all the models separated in folders by 
 
 It is time now to get the learning curves graphs to reduce the research to 9 models. Use this command for each combination of dataset-cell:
 ```
-tensorboard --log_dir models/control/lstm/ 
+tensorboard --logdir models/control/lstm/ 
 ```
 In the "Scalars" of tensorboard you will see a graph like this:
 
