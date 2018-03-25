@@ -37,7 +37,7 @@ Create a root folder and clone the scripts and model repositories:
 ```
 mkdir exampleresearch
 cd exampleresearch
-git clone https://xxxxx.com/xxxxx/xxxxx.git rnn-cells-music-paper rnn-cells-music-paper
+git clone https://xxxxx.com/xxxxx/xxxxx.git rnn-cells-music-paper
 git clone -b 1.0 --single-branch https://xxxxx.com/xxxxx/xxxxx rnnMusicSeqGenerator
 ```
 
