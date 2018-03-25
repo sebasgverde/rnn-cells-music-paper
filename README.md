@@ -2,8 +2,6 @@
 <center>Songs, code and datasets to replicate the research and the specific results of the paper</center>
 
 
-[<center>Paper</center>]() [<center>Github</center>](https://github.com/sebasgverde/rnn-cells-music-paper)
-
 ![](https://sebasgverde.github.io/rnn-cells-music-paper/images/RNNtraining.png)
 ![](https://sebasgverde.github.io/rnn-cells-music-paper/images/RNNsample.png)
 ## Abstract
@@ -39,8 +37,8 @@ Create a root folder and clone the scripts and model repositories:
 ```
 mkdir exampleresearch
 cd exampleresearch
-git clone https://github.com/sebasgverde/rnn-cells-music-paper.git
-git clone -b 1.0 --single-branch https://github.com/sebasgverde/rnnMusicSeqGenerator
+git clone https://xxxxx.com/xxxxx/xxxxx.git rnn-cells-music-paper rnn-cells-music-paper
+git clone -b 1.0 --single-branch https://xxxxx.com/xxxxx/xxxxx rnnMusicSeqGenerator
 ```
 
 create a virtual env using the requirements in rnnMusicSeqGenerator
@@ -49,16 +47,10 @@ mkvirtualenv exampleresearchmusic
 pip install -r ~/exampleresearch/rnnMusicSeqGenerator/requirements.txt
 ```
 
-For this two special libraries which were developed by me, you have two options, I recommend to install them also in the virtual env
+For this two special libraries, install them also in the virtual env
 ```
 pip install music-geometry-eval==1.0
 pip install midi-manager==1.0
-```
-
-but you can also clone the repositories and use them as normal packages
-```
-git clone -b 1.0 --single-branch https://github.com/sebasgverde/music-geometry-eval.git
-git clone -b 1.0 --single-branch https://github.com/sebasgverde/midi-manager.git
 ```
 
 #### Datasets
@@ -67,7 +59,7 @@ The mono-midi-transposition-dataset is the result of series of transformations o
 Download the datasets:
 ```
 mkdir dataset
-wget -N https://www.dropbox.com/sh/xyr47x5ck48krvx/AAAprJDo2at6AlEiWVp-U9cqa?dl=1 -O dataset.zip
+wget -N https://xxxxx -O dataset.zip
 unzip dataset.zip -d dataset/
 rm dataset.zip 
 ```
@@ -81,14 +73,14 @@ python rnn-cells-music-paper/paper_scripts/unittestdatacreation.py -v
 
 **Special Note**: If instead of replicating the research you want to specifically reproduce the paper results, you can just [skip](https://sebasgverde.github.io/rnn-cells-music-paper/#models-metric-evaluation) the next two sections and download the network weights and the 900 generated songs.
 ```
-wget -N https://www.dropbox.com/s/34w1miaz6j01rw5/models.zip?dl=1 -O model_weights.zip
+wget -N https://xxxxx -O model_weights.zip
 unzip model_weights.zip -d ~/exampleresearch/
 rm model_weights.zip 
 ```
 
 ```
 mkdir ~/exampleresearch/experiments/
-wget -N https://www.dropbox.com/s/v2w18qoos8quz8c/generated100.zip?dl=1 -O generated_songs.zip
+wget -N https://xxxxx -O generated_songs.zip
 unzip generated_songs.zip -d ~/exampleresearch/experiments/
 rm generated_songs.zip 
 ```
