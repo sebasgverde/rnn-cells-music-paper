@@ -1,4 +1,4 @@
-# <center>Sequence Generation using Deep Recurrent Networks and Embedding Representations: A study case in music.</center>
+# <center>Printed anonymous version of the supplementary web page.</center>
 <center>Songs, code and datasets to replicate the research and the specific results of the paper</center>
 
 
