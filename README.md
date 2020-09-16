@@ -18,9 +18,9 @@ Automatic generation of sequences has been a highly explored field in the last y
 
 ## Code
 - [Paper scripts](https://github.com/sebasgverde/rnn-cells-music-paper)
-- [RNN model 1.0](https://github.com/sebasgverde/rnnMusicSeqGenerator)
-- [Library for midi manipulation 1.0](https://github.com/sebasgverde/music-geometry-eval)
-- [Library for music evaluation 1.0](https://github.com/sebasgverde/midi-manager)
+- [RNN model](https://github.com/sebasgverde/rnnMusicSeqGenerator)
+- [Library for midi manipulation 1.0](https://github.com/sebasgverde/midi-manager)
+- [Library for music evaluation 1.0](https://github.com/sebasgverde/music-geometry-eval)
 
 ## Demos
 Click the images to see a youtube video
@@ -40,7 +40,7 @@ Create a root folder and clone the scripts and model repositories:
 mkdir exampleresearch
 cd exampleresearch
 git clone https://github.com/sebasgverde/rnn-cells-music-paper.git
-git clone -b 1.0 --single-branch https://github.com/sebasgverde/rnnMusicSeqGenerator
+git clone https://github.com/sebasgverde/rnnMusicSeqGenerator
 ```
 
 create a virtual env using the requirements in rnnMusicSeqGenerator
@@ -156,7 +156,20 @@ Now, you can use the scripts in template_scripts, to transform the midi files in
 - save as .mscz
 - export as png (even so the console doesn't work, export each png manually)
 
-#### Analysing Embeddings Representation of the songs
+### Other scripts
+The scripts in scripts_for_supercomputing are modified versions of the training script for 6 of the experiments which I trained in a cluster environment in HPC centre [Apolo](http://www.eafit.edu.co/centros/apolo/Paginas/technical-specification.aspx). It works with slurm as cluster management and job scheduling system, so also the slurm scripts are provided.
+
+Next two experiments correspond to two different papers:
+
+
+
+
+## Embeddings as representation for symbolic music
+[Paper](https://arxiv.org/abs/2005.09406v1)
+
+### Abstract
+A representation technique that allows encoding music in a way that contains musical meaning would improve the results of any model trained for computer music tasks like generation of melodies and harmonies of better quality. The field of natural language processing has done a lot of work in finding a way to capture the semantic meaning of words and sentences, and word embeddings have successfully shown the capabilities for such a task. In this paper, we experiment with embeddings to represent musical notes from 3 different variations of a dataset and analyze if the model can capture useful musical patterns. To do this, the resulting embeddings are visualized in projections using the t-SNE technique.
+
 To visualize the embeddings, we will us the tensorboard embeddings option, in the case of the paper I used the lstm models for the 3 datasets since these are the most common cells
 
 ```
@@ -169,8 +182,14 @@ Then in tersorboard, choose a point and you will see the nearest points with Euc
 ![](https://sebasgverde.github.io/rnn-cells-music-paper/images/embeddings.png)
 
 
-#### Cost function validation
-The last experiment to cover the whole paper is the cross-entropy validation as the cost function. First, we will train a model varying the "save_every" parameter to have different examples of cross-entropy.
+
+## Cross entropy as objective function for music generative models
+[Paper](https://arxiv.org/abs/2006.02217v1)
+
+### Abstract
+The election of the function to optimize when training a machine learning model is very important since this is which lets the model learn. It is not trivial since there are many options, each for different purposes. In the case of sequence generation of text, cross entropy is a common option because of its capability to quantify the predictive behavior of the model. In this paper, we test the validity of cross entropy for a music generator model with an experiment that aims to correlate improvements in the loss value with the reduction of randomness and the ability to keep consistent melodies. We also analyze the relationship between these two aspects which respectively relate to short and long term memory and how they behave and are learned differently.
+
+The validate cross-entropy as cost function, first, we will train a model varying the "save_every" parameter to have different examples of cross-entropy.
 
 ```
 python 'rnnMusicSeqGenerator/train.py' --save_dir ~/exampleresearch/experiments/cost_function_validation --log_dir ~/exampleresearch/experiments/cost_function_validation --data_dir ~/exampleresearch/dataset/train_final_cleaned.p --num_epochs 50 --batch_size 15 --training_mode='melody' --model 'lstm' --num_layers 2 --save_every 250 --max_models_keep 10
@@ -181,9 +200,3 @@ Finally, we manually generate a song with the same seed and size for each model,
 mkdir ~/exampleresearch/experiments/cost_function_validation/songs
 python 'rnnMusicSeqGenerator/sample.py' --ckpt_dir ~/exampleresearch/experiments/cost_function_validation -n 30 --output_uri ~/exampleresearch/experiments/cost_function_validation/songs/output_controlcase_loss_4.67827-0.mid --seed '60 62 64 62' --sampling_mode='melody' --ckpt_file ~/exampleresearch/experiments/cost_function_validation/model.ckpt_loss_4.67827-0
 ```
-
-
-
-### Other scripts
-The scripts in scripts_for_supercomputing are modified versions of the training script for 6 of the experiments which I trained in a cluster environment in HPC centre [Apolo](http://www.eafit.edu.co/centros/apolo/Paginas/technical-specification.aspx). It works with slurm as cluster management and job scheduling system, so also the slurm scripts are provided.
-
