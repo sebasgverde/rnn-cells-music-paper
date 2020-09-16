@@ -34,7 +34,8 @@ class MyTest(unittest.TestCase):
     def test_clean_tensor(self):
         self.assertEqual(len(tensor) - count_false_songs, len(clean_tensor))
 
-    def test_clean_tensor_false(self):
-        self.assertEqual(len(tensor) - count_false_songs, len(clean_tensor)+1)
+    # # this was done specifically to check it fails
+    # def test_clean_tensor_false(self):
+    #     self.assertEqual(len(tensor) - count_false_songs, len(clean_tensor)+1)
 if __name__ == '__main__':
     unittest.main()
