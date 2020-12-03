@@ -2,7 +2,7 @@
 <center>Songs, code and datasets to replicate the research and the specific results of the paper</center>
 
 
-[<center>Paper</center>]() [<center>Github</center>](https://github.com/sebasgverde/rnn-cells-music-paper)
+[<center>Paper</center>](https://arxiv.org/abs/2012.01231) [<center>Github</center>](https://github.com/sebasgverde/rnn-cells-music-paper)
 
 ![](https://sebasgverde.github.io/rnn-cells-music-paper/images/RNNtraining.png)
 ![](https://sebasgverde.github.io/rnn-cells-music-paper/images/RNNsample.png)
@@ -62,7 +62,7 @@ git clone -b 1.0 --single-branch https://github.com/sebasgverde/midi-manager.git
 ```
 
 #### Datasets
-The mono-midi-transposition-dataset is the result of series of transformations over the mono-MusicXML-dataset
+The [mono-midi-transposition-dataset](https://sebasgverde.github.io/mono-midi-transposition-dataset/) is the result of series of transformations over the mono-MusicXML-dataset
 ![](https://sebasgverde.github.io/rnn-cells-music-paper/images/datasetflow.png)
 Download the datasets:
 ```
